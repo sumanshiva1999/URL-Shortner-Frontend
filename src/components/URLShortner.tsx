@@ -5,6 +5,8 @@ import { useRef } from "react";
 import type { ShortenerProps } from "../interfaces/shortenURL";
 import { useNavigate } from "react-router-dom";
 
+export const LOCAL_URL = "http://localhost:8080";
+export const DEPLOYMENT_URL = "https://url-shortner-backend-production-7ce4.up.railway.app";
 
 function URLShortner(props: ShortenerProps) {
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import URLShortner from "./URLShortner";
+import URLShortner, { DEPLOYMENT_URL } from "./URLShortner";
 import { postAPI } from "../api/APIFunctions";
 import type { ShortenURL } from "../interfaces/shortenURL";
 
@@ -11,7 +11,7 @@ function AddShortURL() {
     const createOrUpdateShortURL = (fullURL: string) => {
         const saveURLPayload = {} as ShortenURL;
         saveURLPayload.fullURL = fullURL;
-        postAPI("http://localhost:8080/save", saveURLPayload).then((response) => {
+        postAPI(`${DEPLOYMENT_URL}/save`, saveURLPayload).then((response) => {
             if(response.ok) {
                 response.json().then((data: ShortenURL) => {
                     setShortURL(data.shortURL);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import URLShortner from "./URLShortner";
+import URLShortner, { DEPLOYMENT_URL } from "./URLShortner";
 import type { ShortenURL } from "../interfaces/shortenURL";
 import { postAPI } from "../api/APIFunctions";
 
@@ -9,7 +9,7 @@ function OpenShortURL () {
 
     const validateUrl = (sortURL: string) => {
         const saveURLPayload = sortURL;
-        postAPI("http://localhost:8080/getURLDetails", saveURLPayload).then((response) => {
+        postAPI(`${DEPLOYMENT_URL}/getURLDetails`, saveURLPayload).then((response) => {
             if(response.ok) {
                 response.json().then((data: ShortenURL) => {
                     console.log("data", data);
